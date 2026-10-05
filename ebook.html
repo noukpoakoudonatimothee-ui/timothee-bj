@@ -1,1 +1,48 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>eBook PRO MAX 2000F - Paiement</title><style>body{background:#0a0a12;color:#fff;font-family:system-ui;max-width:800px;margin:0 auto;padding:20px}h1{color:#00ff88;text-align:center;border:3px solid #00ff88;padding:15px;border-radius:15px}.b{background:#171725;padding:20px;border-radius:15px;margin:15px 0;border:1px solid #333}.o{border:2px solid #ff8c00;background:#1f1500}.btn{padding:14px 28px;border-radius:30px;text-decoration:none;font-weight:900;display:inline-block;width:100%;text-align:center;box-sizing:border-box;cursor:pointer;border:none;margin-top:10px}.btn-o{background:linear-gradient(135deg,#ff8c00,#ff6a00);color:#fff}.btn-g{background:linear-gradient(135deg,#00ff88,#00cc6a);color:#000}input{width:100%;padding:14px;border-radius:10px;border:2px solid #00ff88;background:#000;color:#00ff88;font-size:18px;text-align:center;letter-spacing:2px;box-sizing:border-box}#contenu{display:none}</style></head><body><h1>📘 eBook PRO MAX - 2.000F</h1><div id="paywall" class="b o" style="text-align:center"><h2 style="color:#ff8c00">🔒 Contenu verrouillé</h2><p>Paye 2.000F MoMo <b>01 91 73 75 21</b><br>Envoie capture WhatsApp</p><a class="btn btn-o" href="https://wa.me/2290191737521?text=Jai%20paye%202000F%20CODE" style="background:#25D366;display:block">📲 Envoyer preuve MoMo</a><br><br><input id="codeInput" placeholder="Code TN2000-2026"><br><button onclick="verifier()" class="btn btn-g">🔓 Déverrouiller</button><p id="erreur" style="color:#f44;display:none">Code faux</p></div><div id="contenu"><div class="b" style="border:2px solid #00ff88;text-align:center"><h2 style="color:#00ff88">✅ Merci !</h2><p>Ton exemplaire perso est dans tes Téléchargements</p><p style="color:#888">Ouvre eBook-PRO-MAX-2000F.html dans Chrome</p></div></div><script>function verifier(){let c=document.getElementById('codeInput').value.trim().toUpperCase();if(c==="TN2000-2026"||c.startsWith("TN2000-")||c==="TIMOTHEE2000"){document.getElementById('paywall').style.display='none';document.getElementById('contenu').style.display='block';localStorage.setItem('ebook_ok','1')}else{document.getElementById('erreur').style.display='block'}}if(localStorage.getItem('ebook_ok')==='1'){document.getElementById('paywall').style.display='none';document.getElementById('contenu').style.display='block'}</script></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>eBook PRO MAX - Timothée</title>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:Arial,sans-serif;text-align:center;padding:20px;margin:0}
+h1{color:#FFD700;margin-top:30px}
+.card{background:#151515;border:2px solid #FFD700;border-radius:15px;padding:25px;max-width:380px;margin:25px auto;box-shadow:0 0 20px rgba(255,215,0,0.2)}
+input{width:92%;padding:14px;border-radius:10px;border:none;margin:15px 0;font-size:18px;text-align:center;text-transform:uppercase;font-weight:bold}
+button{background:linear-gradient(45deg,#FFD700,#FFA500);color:#000;border:none;padding:14px;border-radius:10px;font-weight:bold;font-size:17px;width:95%;cursor:pointer}
+#msg{margin-top:15px;font-weight:bold;min-height:25px;font-size:15px}
+.success{color:#00ff88} .error{color:#ff4444}
+small{color:#888}
+</style>
+</head>
+<body>
+<h1>eBook PRO MAX</h1>
+<p>Accès sécurisé par code unique à usage unique</p>
+
+<div class="card">
+<h3 style="margin-top:0">Entre ton code unique</h3>
+<input id="codeInput" placeholder="Ex: TN2000-A1K9">
+<button onclick="verifier()">DÉBLOQUER MON EBOOK</button>
+<div id="msg"></div>
+<small>1 code = 1 seul téléchargement. Ne partage pas ton code.</small>
+</div>
+
+<script>
+let codesValides=[];
+let codesUtilises=JSON.parse(localStorage.getItem('tn_used')||'[]');
+fetch('./codes.json').then(r=>r.json()).then(d=>{codesValides=d;console.log('codes chargés:',d.length)}).catch(()=>{document.getElementById('msg').innerHTML='<span class=error>Erreur chargement</span>'});
+
+function verifier(){
+ const c=document.getElementById('codeInput').value.trim().toUpperCase();
+ const m=document.getElementById('msg');
+ if(!c){m.innerHTML='<span class=error>Entre ton code</span>';return;}
+ if(codesUtilises.includes(c)){m.innerHTML='<span class=error>❌ Code déjà utilisé sur cet appareil !</span>';return;}
+ if(!codesValides.includes(c)){m.innerHTML='<span class=error>❌ Code invalide</span>';return;}
+ codesUtilises.push(c);
+ localStorage.setItem('tn_used',JSON.stringify(codesUtilises));
+ m.innerHTML='<span class=success>✅ Code validé ! Téléchargement...</span>';
+ setTimeout(()=>{window.location.href='./eBook-PRO-MAX.pdf'; m.innerHTML='<span class=success>🎉 Merci ! Ton eBook est dans Téléchargements</span>';},900);
+}
+</script>
+</body>
+</html>
