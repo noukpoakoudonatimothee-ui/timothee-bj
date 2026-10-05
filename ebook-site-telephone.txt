@@ -1,0 +1,28 @@
+EBOOK - COMMENT CREER TON SITE PRO 100% SUR TELEPHONE
+Par Timothée Noukpoakoudon
+
+CHAPITRE 1 : Ton téléphone suffit
+- Pas besoin de PC 300.000F
+- Termux = ordinateur dans poche
+- Preuve : timothee-bj.vercel.app
+
+CHAPITRE 2 : Installation 5 min
+pkg update && pkg upgrade
+pkg install nodejs git
+node -v
+
+CHAPITRE 3 : Premier site
+mkdir mon-site
+Crée index.html
+Logo TN en SVG
+
+CHAPITRE 4 : Mise en ligne gratuite
+GitHub + Vercel = ton-nom.vercel.app en 40 sec
+
+CHAPITRE 5 : Vendre
+Ajoute prix + bouton WhatsApp
+25.000F x 5 clients = 125.000F / mois
+
+BONUS : Code complet offert
+Contact : 01 91 73 75 21
+© 2026 Timothée - Ne pas partager gratuitement
