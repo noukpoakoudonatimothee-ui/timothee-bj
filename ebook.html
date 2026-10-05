@@ -2,46 +2,35 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>eBook PRO MAX - Timothée</title>
 <style>
-body{background:#0a0a0a;color:#fff;font-family:Arial,sans-serif;text-align:center;padding:20px;margin:0}
-h1{color:#FFD700;margin-top:30px}
-.card{background:#151515;border:2px solid #FFD700;border-radius:15px;padding:25px;max-width:380px;margin:25px auto;box-shadow:0 0 20px rgba(255,215,0,0.2)}
-input{width:92%;padding:14px;border-radius:10px;border:none;margin:15px 0;font-size:18px;text-align:center;text-transform:uppercase;font-weight:bold}
-button{background:linear-gradient(45deg,#FFD700,#FFA500);color:#000;border:none;padding:14px;border-radius:10px;font-weight:bold;font-size:17px;width:95%;cursor:pointer}
-#msg{margin-top:15px;font-weight:bold;min-height:25px;font-size:15px}
-.success{color:#00ff88} .error{color:#ff4444}
+body{background:#0a0a0a;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
+.card{background:#151515;padding:30px;border-radius:16px;max-width:420px;width:88%;text-align:center;border:1px solid #333}
+input{width:92%;padding:14px;border-radius:10px;border:none;margin:15px 0;font-size:16px;text-align:center;text-transform:uppercase}
+button{width:100%;padding:14px;background:linear-gradient(90deg,#FFD700,#FFA500);color:#000;font-weight:bold;border:none;border-radius:10px;cursor:pointer;font-size:16px}
+#message{margin-top:15px}
+.succes{color:#00ff88}.erreur{color:#ff4444}
 small{color:#888}
 </style>
 </head>
 <body>
-<h1>eBook PRO MAX</h1>
-<p>Accès sécurisé par code unique à usage unique</p>
-
 <div class="card">
-<h3 style="margin-top:0">Entre ton code unique</h3>
-<input id="codeInput" placeholder="Ex: TN2000-A1K9">
-<button onclick="verifier()">DÉBLOQUER MON EBOOK</button>
-<div id="msg"></div>
-<small>1 code = 1 seul téléchargement. Ne partage pas ton code.</small>
+<h1>📘 eBook PRO MAX</h1>
+<p>Entre le code reçu après paiement</p>
+<input id="codeInput" placeholder="TN2000-A1K9">
+<button onclick="verif()">Débloquer mon eBook</button>
+<div id="message"></div>
+<p><small>Code test : TN2000-A1K9</small></p>
 </div>
-
 <script>
-let codesValides=[];
-let codesUtilises=JSON.parse(localStorage.getItem('tn_used')||'[]');
-fetch('./codes.json').then(r=>r.json()).then(d=>{codesValides=d;console.log('codes chargés:',d.length)}).catch(()=>{document.getElementById('msg').innerHTML='<span class=error>Erreur chargement</span>'});
-
-function verifier(){
+function verif(){
  const c=document.getElementById('codeInput').value.trim().toUpperCase();
- const m=document.getElementById('msg');
- if(!c){m.innerHTML='<span class=error>Entre ton code</span>';return;}
- if(codesUtilises.includes(c)){m.innerHTML='<span class=error>❌ Code déjà utilisé sur cet appareil !</span>';return;}
- if(!codesValides.includes(c)){m.innerHTML='<span class=error>❌ Code invalide</span>';return;}
- codesUtilises.push(c);
- localStorage.setItem('tn_used',JSON.stringify(codesUtilises));
- m.innerHTML='<span class=success>✅ Code validé ! Téléchargement...</span>';
- setTimeout(()=>{window.location.href='./eBook-PRO-MAX.pdf'; m.innerHTML='<span class=success>🎉 Merci ! Ton eBook est dans Téléchargements</span>';},900);
+ const m=document.getElementById('message');
+ if(c==='TN2000-A1K9'){
+  m.innerHTML='<span class=succes>✅ Code correct ! Téléchargement...</span>';
+  setTimeout(()=>{window.location.href='https://drive.google.com/uc?export=download&id=1jlQ3GZ5FDjEkUJRLoUmOvD74q-op39Mn'},800);
+ }else{m.innerHTML='<span class=erreur>❌ Code invalide</span>';}
 }
 </script>
 </body>
