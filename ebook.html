@@ -3,34 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>eBook PRO MAX - Timothée</title>
+<title>eBook PRO MAX</title>
 <style>
 body{background:#0a0a0a;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}
 .card{background:#151515;padding:30px;border-radius:16px;max-width:420px;width:88%;text-align:center;border:1px solid #333}
-input{width:92%;padding:14px;border-radius:10px;border:none;margin:15px 0;font-size:16px;text-align:center;text-transform:uppercase}
+input{width:92%;padding:14px;border-radius:10px;border:none;margin:15px 0;font-size:16px;text-align:center;text-transform:uppercase;font-weight:bold}
 button{width:100%;padding:14px;background:linear-gradient(90deg,#FFD700,#FFA500);color:#000;font-weight:bold;border:none;border-radius:10px;cursor:pointer;font-size:16px}
-#message{margin-top:15px}
 .succes{color:#00ff88}.erreur{color:#ff4444}
-small{color:#888}
 </style>
 </head>
 <body>
 <div class="card">
 <h1>📘 eBook PRO MAX</h1>
-<p>Entre le code reçu après paiement</p>
+<p>Entre ton code personnel</p>
 <input id="codeInput" placeholder="TN2000-A1K9">
 <button onclick="verif()">Débloquer mon eBook</button>
 <div id="message"></div>
-<p><small>Code test : TN2000-A1K9</small></p>
 </div>
 <script>
+const CODES=["TN2000-A1K9","TN2000-B2L8","TN2000-C3M7","TN2000-D4N6","TN2000-E5P5","TN2000-F6Q4","TN2000-G7R3","TN2000-H8S2","TN2000-J9T1","TN2000-K1U0"];
 function verif(){
- const c=document.getElementById('codeInput').value.trim().toUpperCase();
- const m=document.getElementById('message');
- if(c==='TN2000-A1K9'){
-  m.innerHTML='<span class=succes>✅ Code correct ! Téléchargement...</span>';
-  setTimeout(()=>{window.location.href='https://drive.google.com/uc?export=download&id=1jlQ3GZ5FDjEkUJRLoUmOvD74q-op39Mn'},800);
- }else{m.innerHTML='<span class=erreur>❌ Code invalide</span>';}
+let c=document.getElementById('codeInput').value.trim().toUpperCase();
+let m=document.getElementById('message');
+if(CODES.includes(c)){
+m.innerHTML='<span class=succes>✅ Code correct !</span>';
+setTimeout(()=>{window.location.href='https://drive.google.com/uc?export=download&id=1jlQ3GZ5FDjEkUJRLoUmOvD74q-op39Mn'},800);
+}else{m.innerHTML='<span class=erreur>❌ Code invalide</span>';}
 }
 </script>
 </body>
