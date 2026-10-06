@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Business Téléphone 2.0</title>
+<style>body{font-family:Arial;background:#f5f7ff;margin:0;padding:20px}.box{max-width:600px;margin:auto;background:white;padding:25px;border-radius:15px}h1{color:#4f46e5}.price{font-size:32px;color:#16a34a;font-weight:bold}.btn{background:#4f46e5;color:white;padding:15px;width:100%;border:none;border-radius:10px;font-size:18px;margin-top:15px}input{width:100%;padding:12px;margin-top:15px;border-radius:8px;border:1px solid #ccc}</style>
+</head><body><div class="box">
+<h1>📱 BUSINESS TÉLÉPHONE 2.0</h1>
+<p><b>Transforme ton téléphone en machine à 100.000F / mois</b></p>
+<p>10 business avec 0F à 10.000F. Messages WhatsApp prêts. Plan 30 jours inclus.</p>
+<p class="price">2000 FCFA</p>
+<input id="code" placeholder="Code: ex BT2000-A1K9">
+<button class="btn" onclick="verifier()">🔓 Débloquer mon PDF</button>
+<p id="msg" style="color:red"></p>
+</div>
+<script>
+const codes=["BT2000-A1K9","BT2000-B2L8","BT2000-C3M7","BT2000-D4N6","BT2000-E5P5","BT2000-F6Q4","BT2000-G7R3","BT2000-H8S2","BT2000-I9T1","BT2000-J0U0"];
+function verifier(){let c=document.getElementById('code').value.trim().toUpperCase();if(codes.includes(c)){window.location.href="https://drive.google.com/uc?export=download&id=10a8Qcao4pn2uNCFR8vT4oQilj4BzCVHw"}else{document.getElementById('msg').innerText="❌ Code invalide"}} 
+</script></body></html>
